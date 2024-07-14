@@ -1,0 +1,42 @@
+// Definición de Contexto Principal para el Hospedaje T&F. Esto es uun mapa de contextp
+ContextMap HospedajeTyF {
+    contains GestionReservaContext
+    contains GestionClienteContext
+    contains GestionPagosContext
+    contains GestionHabitacionesContext
+    contains GestionEmpleadosContext
+    contains GestionBalancesFinancierosContext
+    contains GestionAutorizacionAutenticacionContext
+
+    /* Cooperación */
+    GestionReservaContext [P]<->[P] GestionPagosContext
+    GestionReservaContext  [P]<->[P] GestionClienteContext
+    GestionReservaContext  [P]<->[P] GestionEmpleadosContext
+
+
+    /* Conformista */
+    GestionReservaContext [CF]<-[PL] GestionHabitacionesContext
+    GestionClienteContext [CF]<-[PL] GestionAutorizacionAutenticacionContext
+    GestionBalancesFinancierosContext [CF]<-[PL] GestionReservaContext 
+
+}
+
+BoundedContext GestionReservaContext {
+}
+
+BoundedContext GestionClienteContext {
+}
+
+BoundedContext GestionHabitacionesContext {
+}
+
+BoundedContext GestionPagosContext {
+}
+
+
+BoundedContext GestionBalancesFinancierosContext {
+}
+BoundedContext GestionEmpleadosContext {
+}
+BoundedContext GestionAutorizacionAutenticacionContext {
+}
